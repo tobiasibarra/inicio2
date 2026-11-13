@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ATM | Páginas web hechas con IA, listas en días</title>
+<meta name="description" content="ATM crea páginas web con inteligencia artificial y programación a medida. Rápidas, responsive y listas para vender. Pedí tu presupuesto.">
+<meta property="og:title" content="ATM | Páginas web hechas con IA">
+<meta property="og:description" content="Tu web profesional, online en días. IA + programación a medida.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#050505">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='black'/><text x='50' y='68' font-size='52' font-family='monospace' font-weight='bold' text-anchor='middle' fill='%23ff6a00'>A</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050505; --panel:#111111; --line:#2a2a2a; --text:#f2f2f2; --muted:#a3a3a3;
+  --orange:#ff6a00; --orange-2:#ff8a2b;
+  --sans:'Space Grotesk',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+   radial-gradient(600px 400px at 85% -5%,rgba(255,106,0,.18),transparent 70%),
+   linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px) 0 0/48px 48px,
+   linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px) 0 0/48px 48px}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+.wrap{width:min(1120px,92%);margin-inline:auto}
+section{padding:96px 0}
+h1,h2,h3{line-height:1.08;letter-spacing:-.02em}
+h1{font-size:clamp(2.4rem,6.2vw,4.6rem);font-weight:700}
+h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;margin-bottom:14px}
+h3{font-size:1.2rem;font-weight:700}
+.sub{color:var(--muted);max-width:56ch;font-size:1.08rem}
+.o{color:var(--orange)}
+.mono{font-family:var(--mono)}
+
+/* header */
+header{position:sticky;top:0;z-index:50;background:rgba(5,5,5,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:var(--mono);font-weight:600;font-size:1.25rem;letter-spacing:.02em}
+.logo b{color:var(--orange)}
+.menu{display:flex;gap:28px;align-items:center;font-size:.95rem;color:var(--muted)}
+.menu a:hover{color:var(--text)}
+.burger{display:none;background:none;border:1px solid var(--line);color:var(--text);width:42px;height:42px;border-radius:8px;font-size:1.3rem;cursor:pointer}
+
+/* buttons */
+.btn{display:inline-block;padding:14px 26px;border-radius:8px;font-weight:700;font-family:var(--sans);font-size:1rem;border:1px solid var(--orange);cursor:pointer;transition:transform .15s,background .15s,box-shadow .15s}
+.btn-p{background:var(--orange);color:#000}
+.btn-p:hover{background:var(--orange-2);transform:translateY(-2px);box-shadow:0 8px 28px rgba(255,106,0,.35)}
+.btn-g{background:transparent;color:var(--text);border-color:var(--line)}
+.btn-g:hover{border-color:var(--orange);color:var(--orange)}
+.btn-s{padding:9px 18px;font-size:.9rem}
+
+/* hero */
+.hero{padding:80px 0 72px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.hero p.sub{margin:22px 0 32px}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+.proof{display:flex;gap:28px;margin-top:36px;flex-wrap:wrap;color:var(--muted);font-size:.92rem}
+.proof strong{display:block;color:var(--text);font-size:1.5rem;font-family:var(--mono)}
+.term{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 0 0 1px rgba(255,106,0,.15),0 30px 80px rgba(255,106,0,.1)}
+.term-bar{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+.term-bar i{width:10px;height:10px;border-radius:50%;background:#333}
+.term-bar i:first-child{background:var(--orange)}
+.term-bar span{margin-left:auto}
+.term pre{font-family:var(--mono);font-size:.84rem;line-height:1.8;padding:20px;min-height:290px;white-space:pre-wrap;word-break:break-word}
+.term .c{color:#6b6b6b}.term .k{color:var(--orange)}.term .ok{color:#7ee787}
+.caret{display:inline-block;width:8px;height:1em;background:var(--orange);vertical-align:-2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.about-grid p{color:var(--muted);margin-bottom:16px}
+.about-grid p strong{color:var(--text)}
+.feats{display:grid;gap:14px}
+.feat{display:flex;gap:16px;padding:20px;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+.feat .ic{flex:none;width:42px;height:42px;border-radius:8px;background:rgba(255,106,0,.12);color:var(--orange);display:grid;place-items:center;font-family:var(--mono);font-weight:600}
+.feat p{color:var(--muted);font-size:.94rem;margin:2px 0 0}
+
+/* steps */
+.steps{margin-top:48px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.step{padding:0 22px 0 0;position:relative}
+.step::before{content:"";position:absolute;top:22px;left:48px;right:0;height:1px;background:linear-gradient(90deg,var(--orange),var(--line))}
+.step:last-child::before{display:none}
+.num{width:44px;height:44px;border-radius:50%;background:var(--orange);color:#000;font-family:var(--mono);font-weight:600;display:grid;place-items:center;margin-bottom:20px;position:relative}
+.step p{color:var(--muted);font-size:.94rem;margin-top:8px}
+.step small{display:inline-block;margin-top:12px;font-family:var(--mono);color:var(--orange);font-size:.8rem}
+
+/* pricing */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px;align-items:stretch}
+.plan{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:32px 28px;display:flex;flex-direction:column}
+.plan.hot{border-color:var(--orange);box-shadow:0 0 0 1px var(--orange),0 20px 60px rgba(255,106,0,.15);position:relative}
+.plan.hot::after{content:"El más elegido";position:absolute;top:-13px;left:24px;background:var(--orange);color:#000;font-size:.78rem;font-weight:700;padding:3px 12px;border-radius:99px}
+.price{font-family:var(--mono);font-size:2rem;font-weight:600;margin:14px 0 4px}
+.price s{font-size:1.1rem;color:var(--muted);font-weight:400;margin-right:4px}
+.price small{font-size:.9rem;color:var(--muted);font-weight:400}
+.plan>p{color:var(--muted);font-size:.94rem}
+.plan ul{list-style:none;margin:22px 0 28px;display:grid;gap:10px;font-size:.95rem;flex:1}
+.plan li::before{content:"+ ";color:var(--orange);font-family:var(--mono);font-weight:600}
+.note{margin-top:22px;color:var(--muted);font-size:.9rem}
+
+/* contact */
+.contact-box{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:48px}
+.contact-box .sub{margin-bottom:24px}
+.chan{display:grid;gap:10px;font-family:var(--mono);font-size:.92rem}
+.chan a{color:var(--muted)}.chan a:hover{color:var(--orange)}
+form{display:grid;gap:14px}
+label{font-size:.88rem;color:var(--muted);display:grid;gap:6px}
+input,select,textarea{width:100%;background:#0a0a0a;border:1px solid var(--line);border-radius:8px;padding:13px 14px;color:var(--text);font:inherit;font-size:.97rem}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px rgba(255,106,0,.2)}
+textarea{min-height:110px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.msg{font-size:.88rem;color:var(--muted)}
+
+footer{border-top:1px solid var(--line);padding:32px 0;color:var(--muted);font-size:.9rem}
+.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+.wa{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--orange);color:#000;font-weight:700;padding:13px 20px;border-radius:99px;box-shadow:0 10px 30px rgba(255,106,0,.4)}
+
+/* responsive */
+@media(max-width:960px){
+  .hero-grid,.about-grid,.contact-box{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr;row-gap:40px}
+  .step:nth-child(2)::before{display:none}
+  .plans{grid-template-columns:1fr;max-width:480px}
+  .contact-box{padding:28px}
+}
+@media(max-width:720px){
+  section{padding:68px 0}
+  .burger{display:block}
+  .menu{position:absolute;top:64px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--bg);border-bottom:1px solid var(--line);display:none;padding:8px 4%}
+  .menu.open{display:flex}
+  .menu a{padding:14px 0;border-bottom:1px solid var(--line)}
+  .menu a:last-child{border:0;margin-top:10px;text-align:center}
+  .steps{grid-template-columns:1fr}
+  .step::before{display:none}
+  .row{grid-template-columns:1fr}
+  .term pre{font-size:.76rem}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#inicio" class="logo">&lt;<b>ATM</b>/&gt;</a>
+    <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false">☰</button>
+    <nav class="menu" id="menu">
+      <a href="#proyecto">El proyecto</a>
+      <a href="#proceso">Cómo trabajamos</a>
+      <a href="#planes">Planes</a>
+      <a href="#contacto" class="btn btn-p btn-s">Pedir presupuesto</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Tu página web profesional, <span class="o">online en días</span>, no en meses.</h1>
+      <p class="sub">En ATM combinamos inteligencia artificial con programación a medida para crear páginas web rápidas, pensadas para que te contacten y te compren. Sin pagar un costo alto al arrancar: pagás una cuota mensual accesible.</p>
+      <div class="cta">
+        <a href="#contacto" class="btn btn-p">Quiero mi web</a>
+        <a href="#proceso" class="btn btn-g">Ver cómo funciona</a>
+      </div>
+      <div class="proof">
+        <div><strong>3–7 días</strong>de entrega</div>
+        <div><strong>50% OFF</strong>de lanzamiento</div>
+        <div><strong>$0</strong>costo inicial</div>
+      </div>
+    </div>
+    <div class="term" aria-label="Demostración de una web generándose">
+      <div class="term-bar"><i></i><i></i><i></i><span>atm-build.sh</span></div>
+      <pre id="typed"></pre>
+    </div>
+  </div>
+</section>
+
+<section id="proyecto">
+  <div class="wrap about-grid">
+    <div>
+      <h2>Una agencia chica con una ventaja grande</h2>
+      <p>ATM nació para resolver un problema simple: tener una página web buena era caro y lento. Usamos IA para hacer el trabajo pesado y <strong>un programador real</strong> para revisar, ajustar y asegurar que todo funcione.</p>
+      <p>El resultado: una web que carga rápido y se ve bien en cualquier pantalla. Nosotros nos encargamos del hosting, los cambios y el mantenimiento, así vos te ocupás de tu negocio.</p>
+      <a href="#contacto" class="btn btn-g">Hablemos de tu proyecto</a>
+    </div>
+    <div class="feats">
+      <div class="feat"><div class="ic">AI</div><div><h3>Diseño y textos con IA</h3><p>Propuestas visuales y copy pensado para vender, en una fracción del tiempo.</p></div></div>
+      <div class="feat"><div class="ic">&lt;/&gt;</div><div><h3>Código limpio y a medida</h3><p>HTML, CSS y JavaScript sin plugins pesados que ralenticen tu web.</p></div></div>
+      <div class="feat"><div class="ic">↯</div><div><h3>Siempre online y al día</h3><p>Hosting, mantenimiento y cambios incluidos en tu cuota mensual.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="proceso">
+  <div class="wrap">
+    <h2>De tu idea a tu web online en 4 pasos</h2>
+    <p class="sub">Un proceso claro, con fechas y sin vueltas. Sabés qué pasa en cada etapa.</p>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3>Nos contás tu negocio</h3><p>Una charla corta: qué vendés, a quién y qué querés que haga tu web.</p><small>Día 1</small></div>
+      <div class="step"><div class="num">2</div><h3>La IA arma la base</h3><p>Generamos estructura, diseño y textos en tus colores y con tu estilo.</p><small>Días 2–3</small></div>
+      <div class="step"><div class="num">3</div><h3>La pulimos a mano</h3><p>Programamos ajustes, revisamos el celular y vos pedís los cambios que quieras.</p><small>Días 4–6</small></div>
+      <div class="step"><div class="num">4</div><h3>La publicamos por vos</h3><p>Tu web queda online en nuestro hosting, con mantenimiento y cambios incluidos mes a mes.</p><small>Día 7</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="planes">
+  <div class="wrap">
+    <h2>Pagá mensual, sin costo inicial</h2>
+    <p class="sub">Arrancás con 50% de descuento de lanzamiento. Hosting, mantenimiento y soporte incluidos en todas las cuotas.</p>
+    <div class="plans">
+      <div class="plan">
+        <h3>Básica</h3><p>Una página para presentar tu negocio y recibir consultas.</p>
+        <div class="price"><s>$20.000</s> $10.000 <small>/ mes</small></div>
+        <ul><li>1 página con todas las secciones</li><li>Botón directo a WhatsApp</li><li>Hosting incluido</li><li>Cambios menores mensuales</li></ul>
+        <a href="#contacto" class="btn btn-g" data-plan="Básica">Elegir Básica</a>
+      </div>
+      <div class="plan hot">
+        <h3>Media</h3><p>Para negocios que quieren captar más clientes online.</p>
+        <div class="price"><s>$35.000</s> $17.500 <small>/ mes</small></div>
+        <ul><li>Hasta 5 secciones o páginas</li><li>Formulario de contacto</li><li>SEO básico y Google Maps</li><li>Hosting y soporte incluidos</li><li>Cambios ilimitados de textos e imágenes</li></ul>
+        <a href="#contacto" class="btn btn-p" data-plan="Media">Elegir Media</a>
+      </div>
+      <div class="plan">
+        <h3>Pro</h3><p>Catálogo, funciones extra y atención prioritaria.</p>
+        <div class="price"><s>$55.000</s> $27.500 <small>/ mes</small></div>
+        <ul><li>Todo lo del plan Media</li><li>Catálogo de productos</li><li>Funciones e integraciones a medida</li><li>Soporte prioritario</li><li>Reportes de visitas</li></ul>
+        <a href="#contacto" class="btn btn-g" data-plan="Pro">Elegir Pro</a>
+      </div>
+    </div>
+    <p class="note">Precios en pesos argentinos. ¿No sabés cuál elegir? Escribinos y te recomendamos sin compromiso.</p>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="contact-box">
+      <div>
+        <h2>Empecemos tu web hoy</h2>
+        <p class="sub">Contanos qué necesitás y te respondemos en menos de 24 horas con una propuesta.</p>
+        <div class="chan">
+          <a href="https://wa.me/5491123917419" target="_blank" rel="noopener">WhatsApp: +54 9 11 2391-7419</a>
+          <a href="mailto:websatm@gmail.com">Email: websatm@gmail.com</a>
+          <a href="https://www.instagram.com/atm_webs/" target="_blank" rel="noopener">Instagram: @atm_webs</a>
+        </div>
+      </div>
+      <form id="form" novalidate>
+        <div class="row">
+          <label>Nombre<input name="nombre" required autocomplete="name" placeholder="Tu nombre"></label>
+          <label>Email<input name="email" type="email" required autocomplete="email" placeholder="tu@email.com"></label>
+        </div>
+        <label>Plan de interés
+          <select name="plan" id="plan"><option>Básica</option><option selected>Media</option><option>Pro</option><option>No sé todavía</option></select>
+        </label>
+        <label>Contanos tu proyecto<textarea name="mensaje" required placeholder="Qué vendés, qué querés lograr con tu web..."></textarea></label>
+        <button class="btn btn-p" type="submit">Enviar por WhatsApp</button>
+        <p class="msg" id="msg" role="status">Al enviar se abre WhatsApp con tu mensaje listo.</p>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span class="logo">&lt;<b>ATM</b>/&gt;</span>
+    <span>Páginas web con IA y programación a medida · © <span id="y"></span> ATM</span>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/5491100000000?text=Hola%20ATM%2C%20quiero%20una%20p%C3%A1gina%20web" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">Escribinos</a>
+
+<script>
+// Año del footer
+document.getElementById('y').textContent = new Date().getFullYear();
+
+// Menú móvil
+const burger = document.getElementById('burger'), menu = document.getElementById('menu');
+burger.addEventListener('click', () => {
+  const open = menu.classList.toggle('open');
+  burger.setAttribute('aria-expanded', open);
+});
+menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+
+// Terminal animada (se muestra completa si el usuario prefiere menos movimiento)
+const lines = [
+  '<span class="c"># ATM · generando tu web</span>',
+  '<span class="k">$</span> atm init --negocio "tu-marca"',
+  '<span class="ok">✓</span> estructura creada',
+  '<span class="k">$</span> atm ia --diseño --textos',
+  '<span class="ok">✓</span> diseño y copy listos',
+  '<span class="k">$</span> atm revisar --celular --velocidad',
+  '<span class="ok">✓</span> responsive · 98/100',
+  '<span class="k">$</span> atm publicar --online',
+  '<span class="ok">✓</span> tu web está online <span class="caret"></span>'
+];
+const out = document.getElementById('typed');
+if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  out.innerHTML = lines.join('\n');
+} else {
+  let i = 0;
+  (function next(){
+    if (i >= lines.length) return;
+    out.innerHTML = lines.slice(0, ++i).join('\n') + (i < lines.length ? '<span class="caret"></span>' : '');
+    setTimeout(next, 650);
+  })();
+}
+
+// Preseleccionar plan desde los botones de precios
+document.querySelectorAll('[data-plan]').forEach(b => b.addEventListener('click', () => {
+  document.getElementById('plan').value = b.dataset.plan;
+}));
+
+// Formulario sin backend: arma el mensaje y abre WhatsApp
+const WA_NUMBER = '5491123917419'; // <-- cambiá por tu número (código de país + área + número, sin + ni espacios)
+document.getElementById('form').addEventListener('submit', e => {
+  e.preventDefault();
+  const f = e.target, d = Object.fromEntries(new FormData(f)), msg = document.getElementById('msg');
+  if (!d.nombre.trim() || !/^\S+@\S+\.\S+$/.test(d.email) || !d.mensaje.trim()) {
+    msg.textContent = 'Completá nombre, un email válido y tu mensaje para continuar.';
+    msg.style.color = 'var(--orange)';
+    return;
+  }
+  const text = `Hola ATM, soy ${d.nombre}.\nPlan: ${d.plan}\nEmail: ${d.email}\n\n${d.mensaje}`;
+  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
+  msg.textContent = 'Listo, se abrió WhatsApp con tu mensaje.';
+  msg.style.color = '';
+  f.reset();
+});
+</script>
+</body>
+</html>
